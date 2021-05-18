@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container">
+        <form action="/loanstatus" method="POST">
+
+         <div class="form-group">
+             <label for="lid" > <b>Status ID</b></label>
+             <div class="col-sm-5">
+                <input type="text" id="lid" class="form-control" name="statusid" value="{{statusid}}" readonly>
+             </div>
+         </div>
+         <div class="form-group">
+             <label for="eid" > <b>Employee ID</b></label>
+             <div class="col-sm-5">
+                <input type="text" id="eid" class="form-control" name="employee_id" value="{{data.employee_id}}" readonly>
+             </div>
+         </div>
+            <div class="form-group">
+             <label for="cid" > <b>Customer Name</b></label>
+             <div class="col-sm-5">
+                <input type="text" id="cid" class="form-control" name="customer_name" value="{{data.customer_name}}" readonly>
+             </div>
+         </div><div class="form-group">
+             <label for="ciid" > <b>Email</b></label>
+             <div class="col-sm-5">
+                <input type="text" id="ciid" class="form-control" name="email" value="{{data.email}}" readonly>
+             </div>
+         </div>
+         <div class="form-group">
+             <label for="liid" > <b>Loan ID</b></label>
+             <div class="col-sm-5">
+                <input type="text" id="liid" class="form-control" name="loan_id" value="{{data.loan_id}}" readonly>
+             </div>
+         </div>
+            <div class="form-group">
+             <label for="loantype" > <b>Loan Type</b></label>
+             <div class="col-sm-5">
+                <input type="text" id="loantype" class="form-control" name="type" value="{{data.loan_type}}" readonly>
+             </div>
+            </div>
+            <div class="form-group">
+             <label for="date_approval" > <b>Date</b></label>
+             <div class="col-sm-5">
+                <input type="date" id="date_approval" class="form-control" name="date_approval" value="{{data.date_approval}}">
+             </div>
+            </div>
+
+            <div class="form-group">
+                <label for="stat" > <b>Status</b></label>
+             <div class="col-sm-5">
+                 <select id="stat" name="status" class="form-control">
+                    <option value="Approved">Approved</option>
+                    <option value="Rejected">Rejected</option>
+                     <option value="waitlisted">Waitlisted</option>
+
+            </select>
+             </div>
+            </div>
+
+            <div class="form-group">
+             <label for="amount" > <b>Loan Amount</b></label>
+             <div class="col-sm-5">
+                <input type="text" id="amount" class="form-control" name="amount_sanctioned" >
+             </div>
+            </div>
+
+             <div class="form-group">
+             <label for="tenure" > <b>Loan Tenure</b></label>
+             <div class="col-sm-5">
+                <input type="text" id="tenure" class="form-control" name="tenure" >
+             </div>
+            </div>
+
+             <div class="form-group">
+             <label for="feedback" > <b>feedback</b></label>
+             <div class="col-sm-5">
+                <input type="text" id="feedback" class="form-control" name="feedback" >
+
+            </div>
+             </div>
+
+
+            <input type="submit" name="submit">
+
+        </form>
+      </div>
+
+{% endblock content %}

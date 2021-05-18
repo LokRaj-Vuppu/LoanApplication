@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% from "security/_macros.html" import render_field_with_errors, render_field %}
+
+ {% block styles %}
+{{ super() }}
+  <style type="text/css">
+      #headtag{
+        text-align:center
+        }
+        </style>
+{% endblock styles %}
+
+
+{% block content %}
+<div class="jumbotron">
+<div class="container">
+
+
+<h1 id="headtag">{{ _('Login') }}</h1>
+<div class="form-group">
+<form action="{{ url_for_security('login') }}" method="POST" name="login_user_form">
+  {{ login_user_form.hidden_tag() }}
+
+
+  <h5>{{ render_field_with_errors(login_user_form.email, class="form-control")}}</h5>
+
+  <h5>{{ render_field_with_errors(login_user_form.password, class="form-control") }}</h5>
+
+  <h5>{{ render_field_with_errors(login_user_form.remember, class="form-check") }}
+</h5>
+  <h5>{{ render_field(login_user_form.submit, class="btn btn-success") }}</h5>
+
+</form>
+  </div>
+  Don't have an account ?<b>
+   <a href="{{ url_for_security('register') }}{% if 'next' in request.args %}?next={{ request.args.next|urlencode }}{% endif %}">{{ _('Register') }}</a><br/>
+</b>
+</div>
+</div>
+{% endblock %}

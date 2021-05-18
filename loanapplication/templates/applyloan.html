@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block head%}
+    {{ super() }}
+  <style type="text/css">
+    body{background:BlanchedAlmond}
+    #mainhead{color:CadetBlue}
+    #mainhead{text-align:center}
+  </style>
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <legend id="mainhead"><h1 >Loan Application</h1></legend>
+    <fieldset>
+    <form  action="/apply_loan" method="POST" enctype="multipart/form-data">
+
+
+             <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="loanid" > <h4>Loan ID</h4></label>
+
+                    <input type="text" class="form-control" id="loanid" name="loanid" value="{{loan_id}}" readonly>
+
+                </div>
+
+           <div class="form-group col-md-6">
+             <label for="customer_id" > <h4>ID</h4></label>
+
+            <input type="text" class="form-control" id="customer_id" name="customer_id" value="{{customer_data.customer_id}}" readonly>
+            </div>
+            </div>
+
+            <div class="form-group">
+             <label for="customer_name" > <h4>Name</h4></label>
+
+            <input type="text" id="customer_name" class="form-control" name="customer_name" value="{{customer_data.customer_name}}" readonly>
+            </div>
+
+
+             <div class="form-group">
+             <label for="email" > <h4>Email</h4></label>
+
+            <input type="email" class="form-control" id="email"name="email" value="{{customer_data.email}}" readonly>
+             </div>
+
+    <div class="form-group">
+      <label for="loan_type"> <h4>Loan Type</h4> </label>
+            <select name="loantype" id="loan_type" class="form-control">
+                    <option value="personal">personal</option>
+                    <option value="car">car</option>
+                    <option value="home">home</option>
+            </select>
+    </div>
+
+
+            <div class="form-group">
+             <label for="amount" > <h4>Amount </h4> </label>
+
+            <input type="text" id="amount" class="form-control" name="amount">
+            </div>
+
+
+                <div class="form-group">
+                <label for="PAN" ><h4>PAN Card - </h4></label>
+
+            <input type="file"  id="PAN" name="PAN">
+                </div>
+
+            <div class="form-group">
+                <label for="aadhar"><h4>Aadhar Card - </h4></label>
+
+            <input type="file"  id="aadhar" name="aadhar">
+            </div>
+
+            <div class="form-group">
+                <label for="passport"><h4>Passport - </h4></label>
+
+            <input type="file" id="passport" name="passport">
+            </div>
+
+        <input type="submit" name="Apply">
+
+        </form>
+    </fieldset>
+</div>
+{% endblock content %}

@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+{% block content %}
+
+        <div class="row">
+        <div class="col-md-8">
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+          <tr>
+              <td><h6>Loan Id</h6></td>
+              <td><h6>CustomerId</h6></td>
+
+              <td><h6>loan_type</h6></td>
+            <td><h6>Amount Needed</h6></td>
+              <td><h6>status</h6></td>
+            <td><h6>Applied Date</h6></td>
+            <td><h6>Aadhar</h6></td>
+            <td><h6>PAN</h6></td>
+            <td><h6>Passport</h6></td>
+            <td><h6>Employee id</h6></td>
+            <td><h6>Action</h6></td>
+
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in loandata %}
+          <tr>
+            <td>{{data.loan_id}}</td>
+            <td>{{data.customer_id}}</td>
+            <td>{{ data.loan_type }}</td>
+            <td>{{ data.amount_needed }}</td>
+            <td>{{ data.status }}</td>
+            <td>{{ data.applied_date }}</td>
+              <td>{{ data.aadhar }}</td>
+            <td>{{ data.PAN }}</td>
+            <td>{{ data.passport }}</td>
+              <td>{{data.employee_id}}</td>
+            <td width="130">
+              <a href="/loanapplications/{{data.loan_id}}" class="btn btn-secondary btn-sm">Assign Employee</a>
+
+
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+        </div>
+    </div>
+
+
+{% endblock %}

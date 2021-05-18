@@ -1,0 +1,56 @@
+{% extends 'layout.html'%}
+
+{% block head%}
+    {{ super() }}
+  <style type="text/css">
+    .jumbotron{
+        padding:-30px
+       }
+    #center{
+        padding:30px
+    }
+     #center{
+        text-align:center
+    }
+    img{
+        display:block;
+        margin-left:auto;
+        margin-right:auto;
+        width:50%;
+    }
+  </style>
+{% endblock %}
+
+    {% block content %}
+       {% if current_user.is_authenticated %}
+         <div id="center">
+            <h1>Welcome to Job Portal</h1>
+         </div>
+        {% else %}
+
+    
+
+
+
+
+
+
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Welcome to Easy Credit</h1>
+                <h2>Get Instant Loans within 24 hours</h2>
+                <h1>First Time User ?
+               <a href="{{ url_for_security('register') }}{% if 'next' in request.args %}?next={{ request.args.next|urlencode }}{% endif %}">{{ _('Register') }}</a><br/></h1>
+
+            <h4>Total Loans disburded 40</h4>
+
+            </div>
+        </div>
+
+        <div class="container">
+
+        </div>
+
+
+        {% endif %}
+    {% endblock content %}

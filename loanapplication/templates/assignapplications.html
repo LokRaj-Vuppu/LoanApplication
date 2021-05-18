@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <fieldset>
+    <form action="/assignemployee" method="POST" enctype="multipart/form-data">
+
+
+        <div class="form-group">
+             <label for="loan_id" > Loan ID</label>
+            <div class="col-sm-5">
+                <input type="text" id="loan_id" class="form-control" name="loan_id" value="{{loandata.loan_id}}">
+            </div>
+         </div>
+
+        <div class="form-group">
+             <label for="customer_id" class="col-sm-2 col-form-label"> Customer ID</label>
+          <div class="col-sm-5">
+            <input type="text" id="customer_id" class="form-control"name="customer_id" value="{{loandata.customer_id}}">
+          </div>
+        </div>
+        <div class="form-group">
+             <label for="customer_name" class="col-sm-2 col-form-label"> Customer Name</label>
+          <div class="col-sm-5">
+            <input type="text" id="customer_name" class="form-control"name="customer_name" value="{{loandata.customer_name}}">
+          </div>
+        </div>
+        <div class="form-group">
+             <label for="email" class="col-sm-2 col-form-label"> Email</label>
+          <div class="col-sm-5">
+            <input type="email" id="email" class="form-control"name="email" value="{{loandata.email}}">
+          </div>
+        </div>
+
+
+        <div class="form-group ">
+      <label for="employee_id" class="col-sm-2 col-form-label">Employee </label>
+        <div class="col-sm-5">
+            <select name="employee_id" id="employee_id" class="form-control">
+
+                    {% for emp in empdata %}
+                    <option value="{{emp.employee_id}}">{{emp.employee_id}}</option>
+                    {% endfor %}
+
+            </select>
+          </div>
+        </div>
+
+
+        <input type="submit" name="Apply">
+
+        </form>
+    </fieldset>
+</div>
+{% endblock %}

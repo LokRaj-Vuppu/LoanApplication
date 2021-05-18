@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+     <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block styles %}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cc.css') }}">
+    {% endblock styles %}
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>Loan Application</title>
+    {% endif %}
+    {% endblock %}
+
+</head>
+<body>
+
+
+<!--        Nav Bar BootStrap  -->
+
+        <nav class="navbar navbar-expand-sm bg-secondary navbar-dark">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Paisa Bazzar</a>
+                </div>
+                <ul class="nav navbar-nav">
+
+                {% if current_user.has_role('admin') %}
+                     <a class="nav-item nav-link" href="/dashboard">Dashboard</a>
+                    <a class="nav-item nav-link" href="/customerhome">Customers</a>
+                    <a class="nav-item nav-link" href="/employeehome">Employees</a>
+                     <a class="nav-item nav-link" href="/applicationsemployee">Assign Applications</a>
+
+                {% endif %}
+
+
+                {% if current_user.has_role('customer') %}
+                     <a class="nav-item nav-link" href="/withoutadmin">Account</a>
+                     <a class="nav-item nav-link" href="/apply_loan">Apply Loan</a>
+                    <a class="nav-item nav-link" href="{{ url_for('check_status') }}"> Check Application Status</a>
+
+                {% endif %}
+
+                {% if current_user.has_role('executive') %}
+                    <a class="nav-item nav-link" href="/dashboard">Dashboard</a>
+                    <a class="nav-item nav-link" href="/homeadmin">Profile</a>
+                    <a class="nav-item nav-link" href="/applications">View Applications</a>
+                {% endif %}
+
+<!--                    <a class="nav-item nav-link" href="/dashboard">Dashboard</a>-->
+<!--                    <a class="nav-item nav-link" href="/customerhome">Customer</a>-->
+<!--                    <a class="nav-item nav-link" href="/employeehome">Employee</a>-->
+<!--                    <a class="nav-item nav-link" href="/applications">View Applications</a>-->
+
+<!--                    <a class="nav-item nav-link" href="/applicationsemployee">Assign Application</a>-->
+
+<!--                  -->
+<!--                    <a class="nav-item nav-link" href="/apply_loan">Apply Loan</a>-->
+<!--                    <a class="nav-item nav-link" href="{{ url_for('check_status') }}"> Check Application Status</a>-->
+
+
+
+
+
+
+                    {% if not current_user.is_authenticated %}
+                        <a class="nav-item nav-link" href="{{ url_for('check_status') }}"> Check Application Status</a>
+                        <a class="nav-item nav-link" href="{{ url_for_security('login') }}{% if 'next' in request.args %}?next={{ request.args.next|urlencode }}{% endif %}">{{ _('Login') }}</a>
+                    {% else %}
+                    <a class="nav-item nav-link" href="{{ url_for('logout') }}">LogOut</a>
+                    {% endif %}
+
+                </ul>
+              </div>
+    </nav>
+
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                {% endfor %}
+                {% endif %}
+        {% endwith %}
+
+<div class="container-fluid">
+{% block content %}
+
+{% endblock content %}
+</div>
+
+    {% block subscribe_script %}
+<script>
+        const btnDelete= document.querySelectorAll('.btn-delete');
+        if(btnDelete) {
+          const btnArray = Array.from(btnDelete);
+          btnArray.forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+              if(!confirm('Are you sure you want to delete it?')){
+                e.preventDefault();
+              }
+            });
+          })
+        }
+
+    </script>
+{% endblock %}
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+<!--        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>-->
+
+    </body>
+</html>

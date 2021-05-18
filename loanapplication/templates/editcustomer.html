@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+    {% block content %}
+
+    <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="card card-body">
+        <form action="/update_customer/{{data.customer_id}}" method="POST">
+         <div class="form-group">
+            <input type="text" class="form-control" name="customer_id" value = {{data.customer_id}} placeholder="Customer ID">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="customer_name" value = {{data.customer_name}} placeholder="Customer Name">
+          </div>
+
+            <div class="form-group">
+            <input type="text" class="form-control" name="phone" value = {{data.phone}} placeholder="Mobile Number">
+          </div>
+
+            <div class="form-group">
+            <input type="text" class="form-control" name="mail" value = {{data.email}} placeholder="Email">
+          </div>
+
+            <div class="form-group">
+            <input type="date" class="form-control" name="dob" value = {{data.dob}} placeholder="Date Of Birth">
+          </div>
+
+            <div class="form-group">
+            <input type="text" class="form-control" name="gender" value = {{data.gender}} placeholder="Gender">
+          </div>
+
+            <div class="form-group">
+            <input type="text" class="form-control" name="address" value = {{data.address}} placeholder="Address">
+          </div>
+
+            <div class="form-group">
+            <input type="text" class="form-control" name="occupation" value = {{data.occupation}} placeholder="occupation">
+          </div>
+
+            <div class="form-group">
+            <input type="text" class="form-control" name="annual_income" value = {{data.annual_income}} placeholder="annual_income">
+          </div>
+
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+    {% endblock content %}

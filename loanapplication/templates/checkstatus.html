@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container">
+
+        <form action="/check_status" method="post">
+
+           <div class="form-group">
+                 <label for="Loan_ID"><h3>Loan ID</h3></label>
+               <input type="text" id="Loan_ID" name="id" class="form-control" placeholder="Enter Loan ID" >
+            </div>
+             <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+
+    </div>
+{% endblock content %}
