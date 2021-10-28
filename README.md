@@ -1,1 +1,1 @@
-# LoanApplication built using Flask, Postgresql as a database, includes functionalities like registration, loan application, loan status etc.
+# LoanApplication built using Flask, Postgresql as a database,SQLAlchemy as ORM tool, WTForms for forms, Flask security for login and registration, includes functionalities like loan application, loan status etc.
